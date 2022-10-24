@@ -34,14 +34,29 @@ const ImageContainer = () => {
       editedCanvasContext.putImageData(imageData, 0, 0);
     };
     image.onerror = err => {
-      console.error('an error occurred: ', err);
+      console.error('An error occurred: ', err);
     };
   }, []);
 
   return (
-    <div>
-      <canvas ref={canvasRef} />
-      <canvas ref={editedCanvasRef} />
+    <div className={'main-container'}>
+      <header className={'header'}>
+        <h2>Image editor</h2>
+        <h4>
+          This app edits the image at the pixel level. It is made for test purposes and currently only changes `rgb`
+          values, but it can be improved as needed to edit images in a more specific way.
+        </h4>
+      </header>
+      <div className={'flex flex-justify-center'}>
+        <div>
+          <div className={'image-title'}>Original image</div>
+          <canvas ref={canvasRef} />
+        </div>
+        <div>
+          <div className={'image-title'}>Edited image</div>
+          <canvas ref={editedCanvasRef} />
+        </div>
+      </div>
     </div>
   );
 };
